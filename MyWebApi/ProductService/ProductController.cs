@@ -17,8 +17,8 @@ namespace ProductsService
         }
 
 
-        // GET api/Products/5
-        public MyProduct Get(int id)
+        // GET myApi/Products/5
+        public MyProduct GetProduct(int id)
         {
             var myProd = new MyProduct("DABC123");
             //Note: Product is name of controller,  

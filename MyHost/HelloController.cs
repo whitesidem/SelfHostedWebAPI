@@ -5,8 +5,8 @@ namespace MyHost
     public class HelloController : ApiController
     {
 
-        // GET api/Hello/5
-        public string Get(int id)
+        // GET myApi/Hello/5
+        public string GetHelloWorld(int id)
         {
             //Note: Hello is name of controller,  
             return "Hello World";

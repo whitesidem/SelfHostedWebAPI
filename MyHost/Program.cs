@@ -42,6 +42,7 @@ namespace MyHost
                 Console.WriteLine("Server is listening at: {0}", baseAddress);
                 Console.WriteLine();
 
+                //Just a helper to spit out all discoverable end points
                 OutputApiDiscoveryDetail(config, baseAddress);
 
                 Console.WriteLine("Press Enter to quit.");
@@ -75,6 +76,7 @@ namespace MyHost
         }
 
 
+        //Note: alternate aproach to included refrences assemblies
         //public class CustomAssembliesResolver : DefaultAssembliesResolver
         //{
         //    public override ICollection<Assembly> GetAssemblies()
