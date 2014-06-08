@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Web.Http;
 
 namespace ProductsService
@@ -17,11 +18,18 @@ namespace ProductsService
         }
 
 
+        //Note: Product is name of controller,  
         // GET myApi/Products/5
         public MyProduct GetProduct(int id)
         {
-            var myProd = new MyProduct("DABC123");
-            //Note: Product is name of controller,  
+
+            if (id <= 0)
+            {
+                //Responses are generally just raw objects whichdefault as a success case, edge conditions such as failures are dealt with by throwing  HttpResponseException
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            var myProd = new MyProduct(String.Format("AMB_{0}", id));
             return myProd;
         }
     }
