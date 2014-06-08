@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.SelfHost;
-using ProductsService;
+using ProductService;
 using RouteParameter = System.Web.Http.RouteParameter;
 
 
