@@ -1,0 +1,6 @@
+﻿Use Atom syntax
+Add self links 
+add HyperMedia  - each prod in collection should know how to rtrieve itself independantly
+Add caching
+
+

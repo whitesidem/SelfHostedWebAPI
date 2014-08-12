@@ -70,6 +70,8 @@ namespace ProductService
             prods.Add(new MyProduct("ABC_1",1));
             prods.Add(new MyProduct("ABC_2",2));
             prods.Add(new MyProduct("ABC_3",3));
+            prods.Add(new MyProduct("DEF_1",4));
+            prods.Add(new MyProduct("DEF_2",5));
             return prods;
         }
     }
