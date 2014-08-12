@@ -47,17 +47,19 @@ namespace ProductService
 
 
 
-        // GET myApi/Product/all
-        public IEnumerable<string> GetProduct(string query)
+
+        // GET myApi/Product?query=all
+        public IEnumerable<MyProduct> GetProduct(string query)
         {
             var prods = AllProductsRepository();
+            query = query.ToLower();
             switch (query)
             {
                 case "all":
-                    return prods.Select(s => s.Sku).ToArray();
+                    return prods.ToArray();
                     break;
                 default:
-                    return prods.Where(p => p.Sku.Contains(query)).Select(s => s.Sku).ToArray();
+                    return prods.Where(p => p.Sku.ToLower().Contains(query)).ToArray();
                     break;
             }
         }

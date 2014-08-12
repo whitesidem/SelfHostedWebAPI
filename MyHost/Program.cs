@@ -16,9 +16,18 @@ namespace MyHost
     {
         static void Main(string[] args)
         {
+
             const string baseAddress = "http://localhost:8080";
 
             var config = new HttpSelfHostConfiguration(baseAddress);
+
+            //Allow use of JsonP in routes
+            FormatterConfig.RegisterFormatters(config.Formatters);
+
+
+            //part of future web api (alternate to jsonp)...
+        //http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+            //           config.EnableCors();
 
 
             ReferenceAllDllsWithControllers();
@@ -29,10 +38,11 @@ namespace MyHost
             //config.Services.Replace(typeof(IAssembliesResolver), assemblyResolver);
 
 
+            //Note: format option here is to enable jsonp formatting
             config.Routes.MapHttpRoute(
-                "API Default", 
-                "myApi/{controller}/{id}",
-                new { id = RouteParameter.Optional });
+                "API Default",
+                "myApi/{controller}/{id}/{format}",
+                new { id = RouteParameter.Optional, format = RouteParameter.Optional });
 
 
 
