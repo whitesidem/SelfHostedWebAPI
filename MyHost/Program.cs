@@ -21,8 +21,8 @@ namespace MyHost
 
             var config = new HttpSelfHostConfiguration(baseAddress);
 
-            //Allow use of JsonP in routes
-            FormatterConfig.RegisterFormatters(config.Formatters);
+            //Allow use of JsonP in routes - this allows calls direct from a browser BUT stops rest calls from service working !!!!***!
+//            FormatterConfig.RegisterFormatters(config.Formatters);
 
 
             //part of future web api (alternate to jsonp)...

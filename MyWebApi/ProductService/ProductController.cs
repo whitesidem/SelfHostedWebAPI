@@ -1,27 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using ProductService.Models;
 
 namespace ProductService
 {
     public class ProductController : ApiController
     {
-        public class MyProduct
-        {
-            public int Id { get; set; }
-            public String Sku { get; set; }
-            public String Description { get { return String.Format("My Sku is {0}", Sku); } }
-
-            public MyProduct(string sku, int id)
-            {
-                Sku = sku;
-                Id = id;
-            }
-        }
-
-
         //Note: Product is name of controller,  
         // GET myApi/Product/5
         public MyProduct GetProduct(int id)
@@ -39,29 +25,41 @@ namespace ProductService
 
         //Note: This does not play well with browser, use wfetch or ajax etc to see result 
         // GET myApi/Product
-        public IEnumerable<MyProduct> GetAllProducts()
+        public MyProductSet GetAllProducts()
         {
             var prods = AllProductsRepository();
-            return prods;
+            var mySet = new MyProductSet
+                {
+                    Products = prods.ToList()
+                };
+            return mySet;
         }
 
 
 
 
         // GET myApi/Product?query=all
-        public IEnumerable<MyProduct> GetProduct(string query)
+        public MyProductSet GetProduct(string query)
         {
             var prods = AllProductsRepository();
             query = query.ToLower();
             switch (query)
             {
                 case "all":
-                    return prods.ToArray();
-                    break;
+                    {
+                        break;
+                    }
                 default:
-                    return prods.Where(p => p.Sku.ToLower().Contains(query)).ToArray();
-                    break;
+                    {
+                        prods = prods.Where(p => p.Sku.ToLower().Contains(query));
+                        break;
+                    }
             }
+            var mySet = new MyProductSet
+            {
+                Products = prods.ToList()
+            };
+            return mySet;
         }
 
         private static IEnumerable<MyProduct> AllProductsRepository()

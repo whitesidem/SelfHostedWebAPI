@@ -1,4 +1,16 @@
-﻿Use Atom syntax
+﻿Build Issues:
+Ensure close the running self serviced service before building.
+
+JSon serialise Casting Problems:
+Can not deal with casting a list, needs a single root object to serialise! 
+
+HOW TO RUN UNITTEST:
+
+first run the main app - which self hosts the api
+next runthe unit test
+
+
+Use Atom syntax
 Add self links 
 add HyperMedia  - each prod in collection should know how to rtrieve itself independantly
 Add caching
